@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+#configure rtc1 
+echo ds3231 0x68 | sudo tee /sys/class/i2c-adapter/i2c-2/new_device
+
+hwclock -f /dev/rtc1 -s                                                         
+hwclock -f /dev/rtc0 -w 
+
+export logFolder=/geotom/log/$(date +%F_%T)
+mkdir $logFolder
+
+# configure pin P9,23 (GPIO49) as output and give access to www-data user
+echo 49 > /sys/class/gpio/export
+echo low > /sys/class/gpio/gpio49/direction
+chown root:gpio /sys/class/gpio/gpio49/value
+chmod a+rw /sys/class/gpio/gpio49/value
+echo 1 > /sys/class/gpio/gpio49/value
+
+echo 45 > /sys/class/gpio/export
+
+#ifup ppp0
+sleep 20
+echo runAuto 
+./runAuto
+# > $logFolder/date_test.log
+exit
+
+

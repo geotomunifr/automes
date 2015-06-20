@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export geotomLog=/geotom/log/geotomLog/$(date +%F_%T)
+
+echo "Log to" $geotomLog
+
+export PYTHONPATH=/geotom/PyGeotom/src
+echo start Measure
+python /geotom/PyGeotom/src/geotom/prog/main.py -c cmd.json -s /dev/ttyUSB0 > $geotomLog
+echo Measure done
+cat $geotomLog
+./mail.py -s "Geotom Test" -t "antoinewiedmer@hotmail.com,christin.hilbich@unifr.ch" -f $geotomLog,/var/www/html/mes/autoMes.wen >> geotomLog
