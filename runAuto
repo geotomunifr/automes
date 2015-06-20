@@ -1,7 +1,8 @@
 #!/bin/bash
 
-hwclock -f /dev/rtc1 -s
-hwclock -f /dev/rtc0 -w
+/geotom/bin/mail.py -s "Git Test" -t "antoinewiedmer@hotmail.com"
+
+exit
 
 while true
 do
