@@ -1,4 +1,3 @@
 # automes
-asdf
-asdf
+Automatic measurements script
 
