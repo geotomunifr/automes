@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/geotom/bin/mail.py -s "Git Test" -t "antoinewiedmer@hotmail.com"
+/geotom/bin/mail.py -s "start automes" -t "antoinewiedmer@hotmail.com"
 
 exit
 
