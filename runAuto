@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] ; then
+if [ $(cat /sys/class/gpio/gpio45/value) -eq 0 ] ; then
 	echo run autoMes
 	./autoMes
 	curdate=`date "+%s"`
