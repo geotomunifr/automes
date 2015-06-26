@@ -1,0 +1,3 @@
+#!/bin/bash
+export PYTHONPATH=/geotom/PyGeotom/src
+python /geotom/PyGeotom/src/geotom/prog/main.py -i 5000 -s /dev/ttyUSB0
