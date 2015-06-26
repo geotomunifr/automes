@@ -5,8 +5,8 @@ if [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] ; then
 	./autoMes
 	curdate=`date "+%s"`
 	echo $(date -d"@$curdate")
-	curquarter=$(($curdate - ($curdate % (10* 60))))
-	curquarter=$(($curquarter + (15 * 60)))
+	curquarter=$(($curdate - ($curdate % (5* 60))))
+	curquarter=$(($curquarter + (7 * 60)))
 	echo $(date -d"@$curquarter")
 	echo sleepAt $(date -d "@$curquarter")
 	ifdown ppp0
