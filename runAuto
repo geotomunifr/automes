@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sleep 1
 if [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] ; then
 	echo run autoMes
 	./autoMes
@@ -17,6 +16,10 @@ if [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] ; then
 	echo rtc0Time $(date) >> dateWake.log
 	echo rtc1Time $(hwclock -f /dev/rtc1 -r) >> dateWake.log
 else
-  	echo "False"
+  	while [ $(cat /sys/class/gpio/gpio45/value) -eq 0 ] 
+  	do
+  		echo sleep
+  		sleep 1
+  	done
 fi
 
