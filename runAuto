@@ -18,7 +18,7 @@ if [ $(cat /sys/class/gpio/gpio45/value) -eq 0 ] ; then
 	echo rtc0Time $(date) >> dateWake.log
 	echo rtc1Time $(hwclock -f /dev/rtc1 -r) >> dateWake.log
 else
-  	while [ $(cat /sys/class/gpio/gpio45/value) -eq 0 ] 
+  	while [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] 
   	do
   		echo sleep
   		sleep 1
