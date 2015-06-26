@@ -13,6 +13,7 @@ if [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] ; then
 	sleep 5
  	rtcwake -m mem -t $(date +%s -d "@$curquarter")
  	ifup ppp0
+ 	sleep 15
 	echo rtc0Time $(date) >> dateWake.log
 	echo rtc1Time $(hwclock -f /dev/rtc1 -r) >> dateWake.log
 else
