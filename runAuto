@@ -1,31 +1,22 @@
 #!/bin/bash
 
-/geotom/bin/mail.py -s "start automes" -t "antoinewiedmer@hotmail.com"
+sleep 1
+if [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] ; then
+	echo run autoMes
+	./autoMes
+	curdate=`date "+%s"`
+	echo $(date -d"@$curdate")
+	curquarter=$(($curdate - ($curdate % (10* 60))))
+	curquarter=$(($curquarter + (15 * 60)))
+	echo $(date -d"@$curquarter")
+	echo sleepAt $(date -d "@$curquarter")
+	#ifdown ppp0
+	sleep 20
+ 	rtcwake -m mem -t $(date +%s -d "@$curquarter")
+ 	#ifup ppp0
+	echo rtc0Time $(date) >> dateWake.log
+	echo rtc1Time $(hwclock -f /dev/rtc1 -r) >> dateWake.log
+else
+  	echo "False"
+fi
 
-exit
-
-while true
-do
-
-	sleep 1
-	if [ $(cat /sys/class/gpio/gpio45/value) -eq 1 ] ; then
-		echo run autoMes
-		./autoMes
-		curdate=`date "+%s"`
-		echo $(date -d"@$curdate")
-		curquarter=$(($curdate - ($curdate % (10* 60))))
-		curquarter=$(($curquarter + (15 * 60)))
-		echo $(date -d"@$curquarter")
-		echo sleepAt $(date -d "@$curquarter")
-		#ifdown ppp0
-		sleep 20
-	 	rtcwake -m mem -t $(date +%s -d "@$curquarter")
-	 	#ifup ppp0
-		echo rtc0Time $(date) >> dateWake.log
-		echo rtc1Time $(hwclock -f /dev/rtc1 -r) >> dateWake.log
-
-	else
-	  	echo "False"
-	fi
-
-done
