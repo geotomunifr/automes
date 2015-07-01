@@ -1,0 +1,5 @@
+cd /geotom/messungen/
+git add -A
+git commit -m "measure commit"
+git push 
+
