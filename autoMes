@@ -12,5 +12,5 @@ cp autoMes.wen /var/www/html/mes/$(date +%F_%T).wen
 cp autoMes.wen /geotom/messungen/$(date +%F_%T).wen
 cat $geotomLog
 /geotom/bin/mail.py -s "Geotom Messung" -t "antoinewiedmer@hotmail.com,geotomunifr@gmail.com" -f $geotomLog,autoMes.wen >> $geotomLog
-echo $(date +%F_%T) $(python rtc_test.py)Â>> /geotom/messungen/Temperature
+echo $(date +%F_%T) $(python rtc_test.py)>> /geotom/messungen/Temperature
 ./push_messungen
