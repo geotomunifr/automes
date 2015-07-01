@@ -5,15 +5,15 @@ if [ $(cat /sys/class/gpio/gpio45/value) -eq 0 ] ; then
 	./autoMes
 	curdate=`date "+%s"`
 	echo $(date -d"@$curdate")
-	curquarter=$(($curdate - ($curdate % (5* 60))))
-	curquarter=$(($curquarter + (7 * 60)))
+	curquarter=$(($curdate - ($curdate % (60* 60))))
+	curquarter=$(($curquarter + (65 * 60)))
 	echo $(date -d"@$curquarter")
-	echo sleepAt $(date -d "@$curquarter")
-	ifdown ppp0
+	echo nextMeasure $(date -d "@$curquarter") >> ../messungen/AutomaticMesureTime
+	#ifdown ppp0
 	sleep 5
  	rtcwake -m mem -t $(date +%s -d "@$curquarter")
- 	sleep 10
- 	ifup ppp0
+ 	#sleep 10
+ 	#ifup ppp0
  	sleep 15
 	echo rtc0Time $(date) >> dateWake.log
 	echo rtc1Time $(hwclock -f /dev/rtc1 -r) >> dateWake.log
