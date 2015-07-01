@@ -10,4 +10,4 @@ python /geotom/PyGeotom/src/geotom/prog/main.py -c cmd.json -s /dev/ttyUSB0 > $g
 echo Measure done
 cp autoMes.wen /var/www/html/mes/$(date +%F_%T).wen
 cat $geotomLog
-./mail.py -s "Geotom Test" -t "antoinewiedmer@hotmail.com" -f $geotomLog,autoMes.wen >> $geotomLog
+/geotom/bin/mail.py -s "Geotom Messung" -t "antoinewiedmer@hotmail.com" -f $geotomLog,autoMes.wen >> $geotomLog

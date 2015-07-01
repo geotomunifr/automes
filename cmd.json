@@ -2,6 +2,6 @@
 	{"cmd":"mesureVoltage","param":{}},
 	{"cmd":"addWenner","param":{"elCount":10,"levelMin":1,"levelMax":3,"dist":2}},
 	{"cmd":"measureList","param":{}},
-	{"cmd":"saveMesures","param":{}},
+	{"cmd":"mesureVoltage","param":{}},
 	{"cmd":"saveMesures","param":{"fileName":"autoMes.wen"}}
 ]
