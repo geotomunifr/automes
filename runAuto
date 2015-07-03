@@ -12,7 +12,7 @@ if [ $(cat /sys/class/gpio/gpio45/value) -eq 0 ] ; then
 	#ifdown ppp0
 	./push_messungen
 	sleep 5
- 	rtcwake -m mem -t $(date +%s -d "@$curquarter")
+ 	#rtcwake -m mem -t $(date +%s -d "@$curquarter")
  	#sleep 10
  	#ifup ppp0
  	sleep 15
