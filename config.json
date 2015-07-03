@@ -9,7 +9,7 @@
 	"uMid":0.002,
 	"uMax":0.2,
 	"iMin":1,
-	"iMax":6,
+	"iMax":4,
 	"sd":0.05,
 	"serialTimeout":5,
 	"uMesFact":1.0197e+05,
