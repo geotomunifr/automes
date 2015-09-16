@@ -4,10 +4,10 @@ if [ $(cat /sys/class/gpio/gpio45/value) -eq 0 ] ; then
 	echo run autoMes
 	./autoMes
 	curdate=`date "+%s"`
-	echo $(date -d"@$curdate")
+	echo Now $(date -d"@$curdate")
 	curquarter=$(($curdate - ($curdate % (20* 60))))
 	curquarter=$(($curquarter + (25 * 60)))
-	echo $(date -d"@$curquarter")
+	echo Wakeup $(date -d"@$curquarter")
 	echo nextMeasure $(date -d "@$curquarter") >> ../messungen/AutomaticMesureTime
 	#ifdown ppp0
 	./push_messungen
